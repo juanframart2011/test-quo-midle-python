@@ -10,4 +10,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'pwa';
+
+  isPWAInstalled = false;
+
+  constructor() {
+    window.addEventListener('appinstalled', () => {
+      this.isPWAInstalled = true;
+      console.log('¡PWA instalada!');
+    });
+  }
 }
