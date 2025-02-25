@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,10 @@ export class AppComponent {
 
   isPWAInstalled = false;
 
-  constructor() {
-    window.addEventListener('appinstalled', () => {
+  constructor(public authService: AuthService) {
+    /*window.addEventListener('appinstalled', () => {
       this.isPWAInstalled = true;
       console.log('¡PWA instalada!');
-    });
+    });*/
   }
 }
