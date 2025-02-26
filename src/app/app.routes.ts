@@ -5,6 +5,8 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
 import { HomeComponent } from './pages/home/home.component';
+import { BankDetailComponent } from './pages/bank/bank-detail/bank-detail.component';
+import { BankStateComponent } from './pages/bank/bank-state/bank-state.component';
 
 export const routes: Routes = [
 { 
@@ -18,7 +20,14 @@ export const routes: Routes = [
         { path: 'register', component: RegisterComponent },      
     ]
 },
-{ path: 'home', component: HomeComponent},
-//{ path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+{ path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+{
+    path: 'bank',
+    children: [
+        { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+        { path: ':id', component: BankDetailComponent, canActivate: [AuthGuard] },
+        { path: 'state/:id', component: BankStateComponent, canActivate: [AuthGuard] },
+    ]
+},
 { path: 'recuperar/:token', component: ChangePasswordComponent },
 ];

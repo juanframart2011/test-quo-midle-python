@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <div *ngIf="bankCurrent" class="card shadow">
+      <!-- Icono o imagen dummy -->
+      <img
+        [src]="bankCurrent?.logo ? bankCurrent?.logo : 'assets/images/bank.png'"
+        class="card-img-top"
+        alt="Banco Icono"
+      />
+  
+      <div class="card-body">
+        <h3 class="card-title">{{ bankCurrent?.display_name }}</h3>
+        <p class="card-text"><strong>Tipo:</strong> {{ bankCurrent?.type }}</p>
+  
+        <a routerLink="/" class="btn btn-secondary">Volver</a>
+      </div>
+    </div>
+  
+    <div *ngIf="!bankCurrent">
+      <p class="text-center text-danger">Banco no encontrado.</p>
+    </div>
+  </div>
+  

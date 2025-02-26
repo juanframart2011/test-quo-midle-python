@@ -3,6 +3,7 @@ import { BelvoService } from '../../core/services/belvo.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Institution } from '../../core/models/institution.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  institutions: any = [];
+  institutions: Institution[] | null = null;
 
   constructor(private belvoService:BelvoService) {}
 

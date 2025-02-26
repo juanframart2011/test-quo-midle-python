@@ -4,13 +4,13 @@
         <div class="card shadow-sm">
           <!-- Imagen o Dummy -->
           <img
-            *ngIf="institution.icon"
-            [src]="institution.icon"
+            *ngIf="institution.logo"
+            [src]="institution.logo"
             class="card-img-top"
             alt="Institution Icon"
           />
           <img
-            *ngIf="!institution.icon"
+            *ngIf="!institution.logo"
             src="assets/images/bank.png"
             class="card-img-top"
             alt="Default Icon"
@@ -22,10 +22,16 @@
               <strong>Tipo:</strong> {{ institution.type }}
             </p>
             <a
-              [routerLink]="['/institution', institution.id]"
-              class="btn btn-primary"
+              [routerLink]="['/bank', institution.id]"
+              class="btn btn-primary" style="color: white !important;"
             >
-              Ver detalles
+              Ver Detalle
+            </a>
+            <a
+              [routerLink]="['/bank/state', institution.id]"
+              class="btn btn-primary" style="color: white !important;"
+            >
+              Ver Balance
             </a>
           </div>
         </div>

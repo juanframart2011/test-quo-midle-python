@@ -17,6 +17,11 @@ export class BelvoService {
     });
   }
 
+  getDetailInstitution(institutionId: number){
+
+    return this.http.get(environment.belvo.url+'/institutions/'+institutionId, { headers: this._getHeaders() });
+  }
+
   getListInstitutions(){
 
     return this.http.get(environment.belvo.url+'/institutions/?page_size=10', { headers: this._getHeaders() });
