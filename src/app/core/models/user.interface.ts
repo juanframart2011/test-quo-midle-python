@@ -1,9 +1,9 @@
 export interface User {
     access_token?: string;
-    username: string;
+    password?: string;
     email: string;
     name: string;
     last_name: string;
-    rol: number;
+    rol_id: number;
     id?: number;
 }  

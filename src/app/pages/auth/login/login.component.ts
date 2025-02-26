@@ -3,11 +3,12 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [HttpClientModule,CommonModule, RouterModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -35,7 +36,6 @@ export class LoginComponent {
         response => {
           
           localStorage.setItem('token', response.access_token);
-          localStorage.setItem('username', response.username);
           localStorage.setItem('email', response.email);
           localStorage.setItem('name', response.name);
           localStorage.setItem('last_name', response.last_name);

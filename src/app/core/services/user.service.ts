@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SharedService } from './shared.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,9 @@ export class UserService {
     );
   }
 
-  create(user: any, password:string): Observable<any> {
-
-    return this.http.post(`/users`, user).pipe(
+  create(user: any): Observable<any> {
+    
+    return this.http.post(environment.url+'auth/register', user ).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }

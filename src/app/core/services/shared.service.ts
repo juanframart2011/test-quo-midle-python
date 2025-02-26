@@ -27,11 +27,11 @@ export class SharedService {
     
     if (error.error instanceof ErrorEvent) {
       // Error del lado del cliente
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage = `Error: ${error.error.error}`;
     } else {
       // Error del lado del servidor
       //errorMessage = `Código de error: ${error.status}, Mensaje: ${error.error.message}`;
-      errorMessage = `${error.error.message}`;
+      errorMessage = `${error.error.error}`;
     }
     
     return throwError(errorMessage);

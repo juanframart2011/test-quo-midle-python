@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { SharedService } from './shared.service';
 import { Router } from '@angular/router';
 import { Observable, catchError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,10 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-    // Cuerpo de la solicitud
-    const data = new URLSearchParams();
-    data.set('email', username);
-    data.set('password', password);
-    
-    return this.http.post<any>(`/token`, data.toString(), { headers }).pipe(
+    return this.http.post(environment.url+'auth/login', {
+      email: username,
+      password: password
+    }).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }

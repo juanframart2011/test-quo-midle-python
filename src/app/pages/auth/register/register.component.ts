@@ -15,14 +15,13 @@ import { User } from '../../../core/models/user.interface';
 })
 export class RegisterComponent {
   
-  password: string = '';
   repassword: string = '';
   user:User = {
-    username: '',
+    password: '',
     email: '',
     name: '',
     last_name: '',
-    rol: 1
+    rol_id: 1
   }
   showErrorMessage = false;
   errorMessage = '';
@@ -39,16 +38,14 @@ export class RegisterComponent {
     this.buttonText = 'Validando';
     // Validar los campos antes de enviar la solicitud
     if (this._validateForm()) {
-      this.userService.create(this.user.username, this.password).subscribe(
+      this.userService.create(this.user).subscribe(
         response => {
           
-          localStorage.setItem('token', response.access_token);
-          localStorage.setItem('username', response.username);
-          localStorage.setItem('email', response.email);
-          localStorage.setItem('name', response.name);
-          localStorage.setItem('last_name', response.last_name);
-          localStorage.setItem('rol', response.rol);
-          localStorage.setItem('id', response.id);
+          localStorage.setItem('email', this.user.email);
+          localStorage.setItem('name', this.user.name);
+          localStorage.setItem('last_name', this.user.last_name);
+          localStorage.setItem('rol', this.user.rol_id.toString());
+          
           this.authService.isAuthenticated = true;
           this.router.navigate(['/home']);
         },
@@ -73,7 +70,7 @@ export class RegisterComponent {
   }
 
   private _validateForm(): boolean {
-    if (!this.user.username || !this.user.email || !this.password) {
+    if ( !this.user.email || !this.user.password) {
       this.showErrorMessage = true;
       this.errorMessage = 'Todos los campos deben estar llenos.';
       setTimeout(() => {

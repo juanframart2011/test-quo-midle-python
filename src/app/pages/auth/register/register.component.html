@@ -7,11 +7,6 @@
         <h1 class="h3 mb-3 fw-normal">Registrar Usuario</h1>
   
         <div class="form-floating">
-          <input type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="username" required>
-          <label for="floatingInput">Usuario</label>
-        </div>
-        
-        <div class="form-floating">
             <input type="text" class="form-control" [(ngModel)]="user.name" name="name" placeholder="name" required>
             <label for="floatingInput">Nombre(s)</label>
         </div>
@@ -27,7 +22,7 @@
         </div>
   
         <div class="form-floating">
-          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+          <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Contraseña" required>
           <label for="floatingPassword">Contraseña</label>
         </div>
 

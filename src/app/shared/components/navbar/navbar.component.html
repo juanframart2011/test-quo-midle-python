@@ -1,1 +1,20 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" routerLink="/home">{{ projectTitle }}</a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-4 mt-4 mb-lg-0 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="nav-link-active" style="cursor: pointer;">Bancos</a>
+          </li>
+        </ul>
+        <div class="col-lg-2 text-end">
+          <button (click)="logout()" type="button" class="btn btn-outline-secondary text-light"><i class="bi bi-escape INN-color-brand-tertiary me-2"></i>Salir</button>
+        </div>
+      </div>
+    </div>
+  </nav>
