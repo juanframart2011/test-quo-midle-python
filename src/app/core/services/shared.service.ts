@@ -1,11 +1,26 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
+
+type MessageType = "success-message" | "error-message" | "warning-message";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+  
+  private dataToShare: any;
+
+  private messageSource = new Subject<{ message: string, messageType: MessageType, type:number }>();
+  message$ = this.messageSource.asObservable();
+
+  setData(data: any) {
+    this.dataToShare = data;
+  }
+
+  getData() {
+    return this.dataToShare;
+  }
 
   handleErrorResponse(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error desconocido';
@@ -20,5 +35,9 @@ export class SharedService {
     }
     
     return throwError(errorMessage);
+  }
+
+  messageComponent(message:string,messageType:MessageType, type:number){
+    this.messageSource.next({ message, messageType, type });
   }
 }

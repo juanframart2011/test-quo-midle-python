@@ -1,1 +1,50 @@
-<p>register works!</p>
+<div class="d-flex bg-body-tertiary INN-h100vh">
+    <main class="form-signin w-100 m-auto rounded-4 card shadow">  
+      <form class="bs-secondary-color needs-validation" novalidate>
+        
+        <img class="mb-4 img-logo" src="assets/images/logo.png" alt="">
+        
+        <h1 class="h3 mb-3 fw-normal">Registrar Usuario</h1>
+  
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="user.username" name="username" placeholder="username" required>
+          <label for="floatingInput">Usuario</label>
+        </div>
+        
+        <div class="form-floating">
+            <input type="text" class="form-control" [(ngModel)]="user.name" name="name" placeholder="name" required>
+            <label for="floatingInput">Nombre(s)</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" [(ngModel)]="user.last_name" name="last_name" placeholder="last_name" required>
+            <label for="floatingInput">Apellidos</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="email" required>
+            <label for="floatingInput">Correo Electronico</label>
+        </div>
+  
+        <div class="form-floating">
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="password" class="form-control" [(ngModel)]="repassword" name="password" placeholder="Repetir Contraseña" required>
+            <label for="floatingPassword">Repetir Contraseña</label>
+        </div>
+  
+        <div class="form-floating text-start my-3">
+          <button type="button" [routerLink]="['/auth/login']" class="link-opacity-50-hover text-decoration-none link-secondary ps-1 INN-function-button">
+            <i class="bi bi-unlock-fill me-2 text-primary"></i>Tengo una cuenta
+          </button>
+        </div>
+        <button *ngIf="!validateRegister" class="btn btn-primary w-100 py-2 INN-color-white INN-color-white-hover" type="submit" (click)="register()">{{ buttonText }}</button>
+        <button *ngIf="validateRegister" class="btn btn-primary w-100 py-2 INN-color-white INN-color-white-hover" disabled="true" type="submit">{{ buttonText }} <div class="spinner-border" role="status"><span class="visually-hidden">{{ buttonText }}</span></div></button>
+      </form>
+    </main>
+  </div>
+  
+  <div class="error-message" *ngIf="showErrorMessage">{{ errorMessage }}</div>

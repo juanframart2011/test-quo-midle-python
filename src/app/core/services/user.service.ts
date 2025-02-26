@@ -25,9 +25,23 @@ export class UserService {
     );
   }
 
-  create(user: any): Observable<any> {
+  create(user: any, password:string): Observable<any> {
 
     return this.http.post(`/users`, user).pipe(
+      catchError(this.sharedService.handleErrorResponse)
+    );
+  }
+
+  recovery(username: any): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    // Cuerpo de la solicitud
+    const data = new URLSearchParams();
+    data.set('username', username);
+    
+    return this.http.post<any>(`/auth/recovery`, data.toString(), { headers }).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }

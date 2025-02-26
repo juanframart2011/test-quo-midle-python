@@ -4,11 +4,12 @@ import { AuthService } from './core/services/auth.service';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageComponent } from './shared/components/message/message.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,NavbarComponent, HttpClientModule],
+  imports: [CommonModule,RouterOutlet,NavbarComponent, HttpClientModule,MessageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
