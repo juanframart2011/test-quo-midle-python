@@ -19,7 +19,7 @@ export class AuthService {
 
   isAuthenticatedUser(): boolean {
   
-    const storedData = localStorage.getItem('token');
+    const storedData = localStorage.getItem('email');
     return storedData !== null && storedData !== undefined;
   }
 

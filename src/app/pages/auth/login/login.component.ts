@@ -35,14 +35,16 @@ export class LoginComponent {
       this.authService.login(this.username, this.password).subscribe(
         response => {
           
-          localStorage.setItem('token', response.access_token);
-          localStorage.setItem('email', response.email);
-          localStorage.setItem('name', response.name);
-          localStorage.setItem('last_name', response.last_name);
-          localStorage.setItem('rol', response.rol);
-          localStorage.setItem('id', response.id);
-          this.authService.isAuthenticated = true;
-          this.router.navigate(['/home']);
+          if( response.user ){
+            
+            localStorage.setItem('email', response.user.email);
+            localStorage.setItem('name', response.user.name);
+            localStorage.setItem('last_name', response.user.last_name);
+            localStorage.setItem('rol', response.user.rol_id);
+            localStorage.setItem('id', response.user.id);
+            this.authService.isAuthenticated = true;
+            this.router.navigate(['/home']);
+          }
         },
         error => {
           this.validateLogin = false;

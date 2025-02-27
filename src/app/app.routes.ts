@@ -26,7 +26,7 @@ export const routes: Routes = [
     children: [
         { path: '', component: HomeComponent, canActivate: [AuthGuard] },
         { path: ':id', component: BankDetailComponent, canActivate: [AuthGuard] },
-        { path: 'state/:id', component: BankStateComponent, canActivate: [AuthGuard] },
+        { path: ':id/movements', component: BankStateComponent, canActivate: [AuthGuard] },
     ]
 },
 { path: 'recuperar/:token', component: ChangePasswordComponent },
