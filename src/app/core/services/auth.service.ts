@@ -36,7 +36,7 @@ export class AuthService {
   logout(): void {
     this.router.navigate(['/auth']);
     this.isAuthenticated = false;
-    localStorage.removeItem('token');
+    localStorage.removeItem('email');
   }
 
   recovery(email: any): Observable<any> {
